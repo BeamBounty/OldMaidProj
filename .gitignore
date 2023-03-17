@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/OldMaidProj/v17
+/OldMaidProj.vcxproj.filters
+/OldMaidProj.vcxproj
