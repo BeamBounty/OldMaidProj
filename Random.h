@@ -10,5 +10,5 @@ class Random : public Player
 		void takeCard();
 
 	public:
-		Random(Player* pl);
+		Random(Player** pl);
 };

@@ -11,7 +11,7 @@ class Shuffler : public Player
 		void takeCard();
 	
 	public:
-		Shuffler(Player* pl);
+		Shuffler(Player** pl);
 
 
 };

@@ -1,7 +1,7 @@
 #include "Card.h"
 #include "LeftPicker.h"
 
-LeftPicker::LeftPicker(Player* pl):Player(pl){};
+LeftPicker::LeftPicker(Player** pl):Player(pl){};
 
 void LeftPicker::play()
 {
@@ -10,5 +10,5 @@ void LeftPicker::play()
 
 void LeftPicker::takeCard()
 {
-	checkPairs(pl->getHand()[0]);
+	checkPairs(pl[0]->getHand()[0]);
 };

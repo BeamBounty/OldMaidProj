@@ -10,5 +10,5 @@ class RightPicker : public Player
 		void takeCard();
 
 	public:
-		RightPicker(Player* pl);
+		RightPicker(Player** pl);
 };

@@ -1,7 +1,7 @@
 #include "Card.h"
 #include "Shuffler.h"
 
-Shuffler::Shuffler(Player* pl) :Player(pl)
+Shuffler::Shuffler(Player** pl) :Player(pl)
 {
 	random = 1 + (rand() % getHand().size()); // need to make that PREVIOUS persons hand.size AND how to get access to hand
 };
@@ -13,5 +13,5 @@ void Shuffler::play()
 void Shuffler::takeCard()
 {
 
-	checkPairs(pl->getHand()[random]);
+	checkPairs(pl[0]->getHand()[random]);
 };

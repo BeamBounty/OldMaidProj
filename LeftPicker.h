@@ -10,5 +10,5 @@ class LeftPicker : public Player
 		void takeCard();
 
 	public:
-		LeftPicker(Player* pl);
+		LeftPicker(Player**);
 };

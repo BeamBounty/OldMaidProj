@@ -2,9 +2,10 @@
 #include "Card.h"
 #include <vector>
 #include <algorithm>
+#include <iostream>
 using namespace std;
 
-Player::Player(Player* pl)
+Player::Player(Player** pl)
 {
 	this->pl = pl;
 }
@@ -44,4 +45,14 @@ void Player::checkPairs(Card& taken)
 	hand.push_back(taken);
 };
 
+void Player::giveCard(Card& card)
+{
+	hand.push_back(card);
+};
 
+ostream& operator<<(ostream& out, Player& players)
+{
+	auto printHand = [&out](Card& card1) { card1.print(); };
+	for_each(players.hand.begin(), players.hand.end(), printHand);
+	return out;
+};

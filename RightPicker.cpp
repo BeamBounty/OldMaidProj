@@ -1,7 +1,7 @@
 #include "Card.h"
 #include "RightPicker.h"
 
-RightPicker::RightPicker(Player* pl) :Player(pl) {};
+RightPicker::RightPicker(Player** pl) :Player(pl) {};
 
 void RightPicker::play()
 {
@@ -10,5 +10,5 @@ void RightPicker::play()
 
 void RightPicker::takeCard()
 {
-	checkPairs(pl->getHand()[getHand().size()]);
+	checkPairs(pl[0]->getHand()[getHand().size()]);
 };

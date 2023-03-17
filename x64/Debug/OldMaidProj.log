@@ -1,3 +1,59 @@
-﻿  Driver.cpp
-C:\Users\geo71\Documents\OOP\OldMaidProj\Driver.cpp(11,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  OldMaidProj.vcxproj -> C:\Users\geo71\Documents\OOP\OldMaidProj\x64\Debug\OldMaidProj.exe
+﻿  Card.cpp
+  Deck.cpp
+  Driver.cpp
+D:\Documents\OOP Code\OldMaidGit\Driver.cpp(11,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Game.cpp
+D:\Documents\OOP Code\OldMaidGit\Deck.h(9,1): error C2011: 'Deck': 'class' type redefinition
+D:\Documents\OOP Code\OldMaidGit\Deck.h(8): message : see declaration of 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Player.h(6,1): error C2011: 'Player': 'class' type redefinition
+D:\Documents\OOP Code\OldMaidGit\Player.h(5): message : see declaration of 'Player'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(10,1): error C2027: use of undefined type 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Deck.h(8): message : see declaration of 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(12,10): error C2027: use of undefined type 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Deck.h(8): message : see declaration of 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(26,13): error C2027: use of undefined type 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Deck.h(8): message : see declaration of 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(38,1): error C2027: use of undefined type 'Player'
+D:\Documents\OOP Code\OldMaidGit\Player.h(5): message : see declaration of 'Player'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(43,22): error C2027: use of undefined type 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Deck.h(8): message : see declaration of 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(43,44): error C2027: use of undefined type 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Deck.h(8): message : see declaration of 'Deck'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(43,5): error C2672: 'for_each': no matching overloaded function found
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(43,68): error C2780: '_Fn std::for_each(_InIt,_InIt,_Fn)': expects 3 arguments - 2 provided
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\algorithm(256): message : see declaration of 'std::for_each'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(47,59): error C2679: binary '<<': no operator found which takes a right-hand operand of type '_Ty' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=Player
+          ]
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(464,39): message : could be 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(std::basic_streambuf<char,std::char_traits<char>> *)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(439,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(const void *)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(421,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(long double)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(403,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(385,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(float)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(367,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(unsigned __int64)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(349,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(__int64)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(331,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(unsigned long)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(313,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(long)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(294,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(unsigned int)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(268,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(int)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(249,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(unsigned short)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(215,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(short)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(197,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(bool)'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(192,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(std::ios_base &(__cdecl *)(std::ios_base &))'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(187,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(std::basic_ios<char,std::char_traits<char>> &(__cdecl *)(std::basic_ios<char,std::char_traits<char>> &))'
+D:\Visual Studios\IDE\VC\Tools\MSVC\14.30.30705\include\ostream(182,39): message : or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(std::basic_ostream<char,std::char_traits<char>> &(__cdecl *)(std::basic_ostream<char,std::char_traits<char>> &))'
+D:\Documents\OOP Code\OldMaidGit\Game.cpp(47,59): message : while trying to match the argument list '(std::basic_ostream<char,std::char_traits<char>>, _Ty)'
+          with
+          [
+              _Ty=Player
+          ]
+  LeftPicker.cpp
+  Player.cpp
+  Random.cpp
+D:\Documents\OOP Code\OldMaidGit\Random.cpp(14,33): error C2227: left of '->getHand' must point to class/struct/union/generic type
+D:\Documents\OOP Code\OldMaidGit\Random.cpp(14,33): message : type is 'Player **'
+  RightPicker.cpp
+  Shuffler.cpp
+  Generating Code...

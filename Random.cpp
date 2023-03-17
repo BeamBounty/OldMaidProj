@@ -2,7 +2,7 @@
 #include "Random.h"
 #include <time.h>
 
-Random::Random(Player* pl) :Player(pl) {};
+Random::Random(Player** pl) :Player(pl) {};
 
 void Random::play()
 {
@@ -12,5 +12,5 @@ void Random::play()
 void Random::takeCard()
 {
 	int random = 1 + (rand() % pl->getHand().size()); // need to make that PREVIOUS persons hand.size AND how to get access to hand
-	checkPairs(pl->getHand()[random]);
+	checkPairs(pl[0]->getHand()[random]);
 };

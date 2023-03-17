@@ -1,19 +1,23 @@
 #include "Card.h"
 #include <vector>
+#include <iostream>
 using namespace std;
 
 class Player
 {
 	private:
 		vector<Card> hand;
+	
 	protected:
-		Player* pl;
-		virtual void play() = 0;
-		virtual void takeCard(vector<Card>&) = 0;
-		void initCheckPairs();
+		Player** pl;
+		virtual void takeCard() = 0;
 		void checkPairs(Card&);
-	public:
-		Player(Player*);
-		vector<Card> getHand();
 
+	public:
+		void initCheckPairs();
+		virtual void play() = 0;
+		Player(Player**);
+		vector<Card> getHand();
+		void giveCard(Card&);
+		friend ostream& operator<<(ostream&,Player&);
 };
