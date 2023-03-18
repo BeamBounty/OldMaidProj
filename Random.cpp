@@ -2,15 +2,22 @@
 #include "Random.h"
 #include <time.h>
 
-Random::Random(Player** pl) :Player(pl) {};
+Random::Random(Player** pl,int ID):Player(pl,ID) {};
 
 void Random::play()
 {
-	takeCard(); //take card from previous (dont know how to determine that)
+	takeCard(); 
 };
 
 void Random::takeCard()
 {
-	int random = 1 + (rand() % pl->getHand().size()); // need to make that PREVIOUS persons hand.size AND how to get access to hand
-	checkPairs(pl[0]->getHand()[random]);
+	int random = (rand() % (*pl)->getHand().size()); // Choose a random number based of the size of the last persons hand, use that to pick a card
+
+	checkPairs((*pl)->getCard(random));
+
+};
+
+string Random::type()
+{
+	return "Random Picker";
 };

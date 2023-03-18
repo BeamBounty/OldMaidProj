@@ -1,14 +1,19 @@
 #include "Card.h"
 #include "LeftPicker.h"
 
-LeftPicker::LeftPicker(Player** pl):Player(pl){};
+LeftPicker::LeftPicker(Player** pl,int ID):Player(pl,ID){};
 
 void LeftPicker::play()
 {
-	takeCard(); //take card from previous (dont know how to determine that)
+	takeCard(); 
 };
 
 void LeftPicker::takeCard()
 {
-	checkPairs(pl[0]->getHand()[0]);
+	checkPairs((*pl)->getCard(0)); // Grab a card from the previous player at position 0
+};
+
+string LeftPicker::type()
+{
+	return "Left Picker";
 };

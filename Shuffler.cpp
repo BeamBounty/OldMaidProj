@@ -1,17 +1,29 @@
 #include "Card.h"
 #include "Shuffler.h"
-
-Shuffler::Shuffler(Player** pl) :Player(pl)
+#include <vector>
+#include <algorithm>
+#include <string>
+Shuffler::Shuffler(Player** pl,int ID) :Player(pl,ID)
 {
-	random = 1 + (rand() % getHand().size()); // need to make that PREVIOUS persons hand.size AND how to get access to hand
+	random = -1;
 };
+
 void Shuffler::play()
 {
-	takeCard(); //take card from previous (dont know how to determine that)
+	takeCard(); 
+	shuffleHand();
 };
 
 void Shuffler::takeCard()
 {
+	if(random < 0 || random >= (*pl)->getHand().size()) //Similar to random, pick a card that is within the size of the previous players hand
+		random = (rand() % (*pl)->getHand().size());  
 
-	checkPairs(pl[0]->getHand()[random]);
+	checkPairs((*pl)->getCard(random));
+
+};
+
+string Shuffler::type()
+{
+	return "Shuffler Picker's Wacky Random Number: " + to_string(random);
 };

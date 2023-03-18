@@ -8,7 +8,8 @@ class RightPicker : public Player
 	protected:
 		void play();
 		void takeCard();
+		string type();
 
 	public:
-		RightPicker(Player** pl);
+		RightPicker(Player** pl,int);
 };

@@ -9,9 +9,9 @@ class Shuffler : public Player
 	protected:
 		void play();
 		void takeCard();
-	
+		string type();
 	public:
-		Shuffler(Player** pl);
+		Shuffler(Player** pl,int);
 
 
 };

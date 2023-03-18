@@ -8,7 +8,7 @@ class LeftPicker : public Player
 	protected:
 		void play();
 		void takeCard();
-
+		string type();
 	public:
-		LeftPicker(Player**);
+		LeftPicker(Player**,int);
 };

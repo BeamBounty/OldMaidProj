@@ -7,7 +7,7 @@
 class Game
 {
 	private:
-		Player** lastPlay;
+		Player* lastPlay;
 		Deck standard;
 		vector<Player*> players; 
 	public:

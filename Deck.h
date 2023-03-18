@@ -1,3 +1,6 @@
+#ifndef DeckH
+#define DeckH
+
 #include "Card.h"
 #include <algorithm>
 #include <vector>
@@ -27,3 +30,5 @@ public:
 	friend ostream& operator<<(ostream&, Deck&);
 
 };
+
+#endif // !DeckH

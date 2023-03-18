@@ -8,7 +8,8 @@ class Random : public Player
 	protected:
 		void play();
 		void takeCard();
+		string type();
 
 	public:
-		Random(Player** pl);
+		Random(Player** pl,int);
 };

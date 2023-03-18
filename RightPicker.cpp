@@ -1,14 +1,20 @@
 #include "Card.h"
 #include "RightPicker.h"
 
-RightPicker::RightPicker(Player** pl) :Player(pl) {};
+RightPicker::RightPicker(Player** pl,int ID) :Player(pl,ID) {};
 
 void RightPicker::play()
 {
-	takeCard(); //take card from previous (dont know how to determine that)
+	takeCard(); 
 };
 
 void RightPicker::takeCard()
 {
-	checkPairs(pl[0]->getHand()[getHand().size()]);
+	checkPairs((*pl)->getCard((*pl)->getHand().size()-1)); // Same as Left Picker, but we take from the end of the previous players hand not index 0
+
+};
+
+string RightPicker::type()
+{
+	return "Right Picker";
 };
