@@ -87,9 +87,8 @@ void Player::shuffleHand()
 
 Card& Player::getCard(int cdNum) // Also mostly for debugging, lets me know card they are attemping to grab
 {
-	cout << "Is attempting to grab card at: " << cdNum << " from " << ID << endl;
-	cout << "Size of said hand:" << hand.size() << endl << endl;
 	Card temp = hand[cdNum];
+	cout << "Card picked: " << temp.getType() << temp.getNumber() << endl << endl;
 	cardRemove(temp);
 	return temp;
 };

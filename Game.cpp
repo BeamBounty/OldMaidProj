@@ -75,11 +75,11 @@ istream& operator>>(istream& file, Game& game)
     {
         int randGen = rand() % 100 + 1;
         Player* ptemp;
-        if (randGen < instructions[2]) //randgen < 30 
+        if (randGen < instructions[2]) 
         {
             ptemp = new LeftPicker(&game.lastPlay,i+1); 
         }
-        else if (randGen < instructions[2] + instructions[3]) // randgen < 30 + 20
+        else if (randGen < instructions[2] + instructions[3]) 
         {
             ptemp = new RightPicker(&game.lastPlay,i+1);
         }
@@ -120,33 +120,48 @@ void Game::gamePlay()
             std::cout << "Player Count: " << players.size() << endl;
             std::cout << "---------------------------------------------------- \n\n";
         }
+        hasWon(players[i], i); // In case of god-hand where they have only pairs in hand from start
+        i %= players.size(); // hasWon will remove a player at a certain index which MAY throw i out of bounds from the player vector, %= sets it back within range of said vector
 
-        if (players[i]->getHand().size() == 0) // In-case of god hand where they win after being dealt
-        {
-            std::cout << "\n\n++++++++++++++++++++++++++++++++++++++++++++++++++++ \n";
-            std::cout << "Won the Round: \n" << *players[i];
-            std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n";
-            players.erase(players.begin() + i);
-        }
-
+        cout << "-------------------------\n";
+        cout << "Turn: " << i << "\n\n";
+        cout << *players[i] << "\nAttempting to pick card from: \n" << *lastPlay << endl;
         players[i]->play();
-        if (players[i]->getHand().size() == 0)
+        cout << "-------------------------\n";
+
+        int lastIndex = i > 0 ? i-1 : players.size()-1; 
+        
+        if (hasWon(lastPlay, lastIndex)) // Edge case where it attempts to draw from previous player that has already won, thus hand.size() = 0
         {
-            std::cout << "\n\n++++++++++++++++++++++++++++++++++++++++++++++++++++ \n";
-            std::cout << "Won the Round: \n" << *players[i];
-            std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n";
-            players.erase(players.begin() + i);
+            lastIndex %= players.size();
+            i %= players.size();
+            lastIndex = lastIndex > 0 ? lastIndex-1 : players.size() - 1; //Instead set it to pull from the player BEFORE the one that has just won
+            lastPlay = players[lastIndex];
         }
-        else
+        if (!hasWon(players[i],i))
         {
             lastPlay = players[i];
             i++;
-            i %= players.size();
         }
-        std::cout << *players[i] << endl;
+            i %= players.size();
     }
+    
     std::cout << "**************************************************** \n";
     std::cout <<"Loser: \n"<< *players[0];
     std::cout << "**************************************************** \n";
 
+};
+
+bool Game::hasWon(Player* play, int index)
+{
+    if (play->getHand().size() == 0) 
+    {
+        std::cout << "\n\n++++++++++++++++++++++++++++++++++++++++++++++++++++ \n";
+        std::cout << "Won the Round: \n" << *play;
+        std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n";
+        players.erase(players.begin() + index);
+        return true;
+    }
+
+    return false;
 };
