@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    // TEST DRIVER, USING FOR DEBUGGING
+    // TEST DRIVER, works but feel free to change
     srand(time(0));
 
     ifstream amtPlayers("Input2.txt");
