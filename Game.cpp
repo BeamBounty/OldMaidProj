@@ -149,7 +149,6 @@ void Game::gamePlay()
     std::cout << "**************************************************** \n";
     std::cout <<"Loser: \n"<< *players[0];
     std::cout << "**************************************************** \n";
-
 };
 
 bool Game::hasWon(Player* play, int index)

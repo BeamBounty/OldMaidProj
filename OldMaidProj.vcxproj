@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardGameSimulator.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -136,9 +137,11 @@
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="RightPicker.cpp" />
     <ClCompile Include="Shuffler.cpp" />
+    <ClCompile Include="StatisticsKeeper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardGameSimulator.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="LeftPicker.h" />
@@ -146,6 +149,7 @@
     <ClInclude Include="Random.h" />
     <ClInclude Include="RightPicker.h" />
     <ClInclude Include="Shuffler.h" />
+    <ClInclude Include="StatisticsKeeper.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Input.txt" />

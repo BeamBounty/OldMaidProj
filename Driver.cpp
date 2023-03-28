@@ -13,9 +13,8 @@ int main()
     srand(time(0));
 
     ifstream amtPlayers("Input2.txt");
-    
+
     Game game1;
-    
     amtPlayers >> game1;
 
     game1.gamePlay();
