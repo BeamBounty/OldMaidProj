@@ -7,8 +7,8 @@ class Shuffler : public Player
 	private:
 		int random;
 	protected:
-		void play();
-		void takeCard();
+		Card& play();
+		Card& takeCard();
 		string type();
 	public:
 		Shuffler(Player** pl,int);

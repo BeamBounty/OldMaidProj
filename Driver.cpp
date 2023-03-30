@@ -4,6 +4,7 @@
 #include "Deck.h"
 #include "Player.h"
 #include "Game.h"
+#include "CardGameSimulator.h"
 #include <vector>
 using namespace std;
 
@@ -12,11 +13,10 @@ int main()
     // TEST DRIVER, works but feel free to change
     srand(time(0));
 
-    ifstream amtPlayers("Input2.txt");
 
-    Game game1;
-    amtPlayers >> game1;
+    CardGameSimulator cgs;
 
-    game1.gamePlay();
+    cgs.get_user_input();
+    cgs.generateGames();
 
 };

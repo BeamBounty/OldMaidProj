@@ -13,14 +13,15 @@ class Player
 		int ID;
 	protected:
 		Player** pl;
-		virtual void takeCard() = 0;
+		virtual Card& takeCard() = 0; // Allows us to print into the output file (can't print it otherwise if not Card&)
 		void checkPairs(Card&);
 		virtual string type() = 0;
 
 	public:
 		Player();
+		~Player();
 		void initCheckPairs();
-		virtual void play() = 0;
+		virtual Card& play() = 0; // Allows us to print into the output file (can't print it otherwise if not Card&)
 		Player(Player**,int);
 		vector<Card> getHand();
 		void giveCard(Card&);

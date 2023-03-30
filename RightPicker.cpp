@@ -3,15 +3,17 @@
 
 RightPicker::RightPicker(Player** pl,int ID) :Player(pl,ID) {};
 
-void RightPicker::play()
+Card& RightPicker::play()
 {
-	takeCard(); 
+	return takeCard(); 
 };
 
-void RightPicker::takeCard()
+Card& RightPicker::takeCard()
 {
-	checkPairs((*pl)->getCard((*pl)->getHand().size()-1)); // Same as Left Picker, but we take from the end of the previous players hand not index 0
+	Card temp = (*pl)->getCard((*pl)->getHand().size() - 1); // Same as Left Picker, but we take from the end of the previous players hand not index 0
+	checkPairs(temp);
 
+	return temp;
 };
 
 string RightPicker::type()

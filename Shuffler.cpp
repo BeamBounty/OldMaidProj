@@ -8,19 +8,22 @@ Shuffler::Shuffler(Player** pl,int ID) :Player(pl,ID)
 	random = -1;
 };
 
-void Shuffler::play()
+Card& Shuffler::play()
 {
-	takeCard(); 
+	Card temp = takeCard();
 	shuffleHand();
+	return temp;
 };
 
-void Shuffler::takeCard()
+Card& Shuffler::takeCard()
 {
 	if(random < 0 || random >= (*pl)->getHand().size()) //Similar to random, pick a card that is within the size of the previous players hand
 		random = (rand() % (*pl)->getHand().size());  
 
-	checkPairs((*pl)->getCard(random));
+	Card temp = (*pl)->getCard(random);
+	checkPairs(temp);
 
+	return temp;
 };
 
 string Shuffler::type()

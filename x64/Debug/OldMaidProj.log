@@ -1,7 +1,5 @@
-﻿  Driver.cpp
-D:\Documents\OOP Code\OldMaidGit\Driver.cpp(13,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Game.cpp
-D:\Documents\OOP Code\OldMaidGit\Game.cpp(132,55): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Documents\OOP Code\OldMaidGit\Game.cpp(138,73): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+﻿  Card.cpp
+  Player.cpp
   Generating Code...
+D:\Documents\OOP Code\OldMaidGit\Player.cpp(97): warning C4172: returning address of local variable or temporary: temp
   OldMaidProj.vcxproj -> D:\Documents\OOP Code\OldMaidGit\x64\Debug\OldMaidProj.exe

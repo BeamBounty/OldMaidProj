@@ -27,13 +27,44 @@ Game::Game() // Reads in information from input.txt, intializes a deck of cards,
             fin >> standard;
         }
     }
+    fin.close();
 
     standard.shuffleCards();
 };
 
+Game::Game(string deckInput, ofstream* outputName)
+{
+    lastPlay = NULL;
+    standard.makeDeck();
+
+    ifstream fin(deckInput);
+    outputF = outputName;
+
+    if (fin && fin.is_open())
+    {
+        while (!fin.eof())
+        {
+            fin >> standard;
+        }
+    }
+    else
+        cout << "File Not Found!";
+
+    fin.close();
+    standard.shuffleCards();
+};
+
+Game::~Game() // Deletes all the pointers we've created 
+{
+    lastPlay = NULL;
+    delete lastPlay;
+    delete outputF;
+    for_each(players.begin(), players.end(), [](Player* pl) {delete pl;}); // Iterates through players and "deletes" all player pointers
+};
+
 void Game::distribCards() // Distributes the cards to each player using a lambda function distribCards
 {
-    std::cout << "Standard Deck: \n" << standard << "\n";
+    (* outputF) << "Standard Deck: \n" << standard << "\n";
 
     int i = 0;
     auto distribCards = [this,&i](Card& card1)
@@ -104,60 +135,68 @@ istream& operator>>(istream& file, Game& game)
 // Those who hit a hand size == 0, will be declared winner in whichever round they manage to clear their hand
 void Game::gamePlay() 
 {
-    lastPlay = players[players.size()-1];
+
+    lastPlay = players[players.size() - 1];
 
     int i = 0;
     distribCards();
-    for_each(players.begin(), players.end(), [](Player *temp) { temp->initCheckPairs(); });
+    for_each(players.begin(), players.end(), [](Player* temp) { temp->initCheckPairs(); });
     int rnd = 0;
     while (players.size() > 1)
     {
+        if (rnd == 1000) // If infinite loop, we need disk space
+        {
+            (*outputF) << "NO LOSERS" << endl;
+            break;
+        }
+
         if (i == 0)
         {
             rnd++;
-            std::cout << "---------------------------------------------------- \n";
-            std::cout << "Round: " << rnd << endl;
-            std::cout << "Player Count: " << players.size() << endl;
-            std::cout << "---------------------------------------------------- \n\n";
+            (* outputF) << "---------------------------------------------------- \n";
+            (* outputF) << "Round: " << rnd << endl;
+            (* outputF) << "Player Count: " << players.size() << endl;
+            (* outputF) << "---------------------------------------------------- \n\n";
         }
         hasWon(players[i], i); // In case of god-hand where they have only pairs in hand from start
         i %= players.size(); // hasWon will remove a player at a certain index which MAY throw i out of bounds from the player vector, %= sets it back within range of said vector
 
-        cout << "-------------------------\n";
-        cout << "Turn: " << i << "\n\n";
-        cout << *players[i] << "\nAttempting to pick card from: \n" << *lastPlay << endl;
-        players[i]->play();
-        cout << "-------------------------\n";
+        (* outputF) << "-------------------------\n";
+        (* outputF) << "Turn: " << i << "\n\n";
+        (* outputF) << *players[i] << "\nAttempting to pick card from: \n" << *lastPlay << endl;
+        Card temp = players[i]->play();
+        (* outputF) << "Card picked: " << temp.getType() << temp.getNumber() << endl << endl;
+        (* outputF) << "-------------------------\n";
 
-        int lastIndex = i > 0 ? i-1 : players.size()-1; 
-        
+        int lastIndex = i > 0 ? i - 1 : players.size() - 1;
+
         if (hasWon(lastPlay, lastIndex)) // Edge case where it attempts to draw from previous player that has already won, thus hand.size() = 0
         {
             lastIndex %= players.size();
             i %= players.size();
-            lastIndex = lastIndex > 0 ? lastIndex-1 : players.size() - 1; //Instead set it to pull from the player BEFORE the one that has just won
+            lastIndex = lastIndex > 0 ? lastIndex - 1 : players.size() - 1; //Instead set it to pull from the player BEFORE the one that has just won
             lastPlay = players[lastIndex];
         }
-        if (!hasWon(players[i],i))
+        if (!hasWon(players[i], i))
         {
             lastPlay = players[i];
             i++;
         }
-            i %= players.size();
+        i %= players.size();
     }
-    
-    std::cout << "**************************************************** \n";
-    std::cout <<"Loser: \n"<< *players[0];
-    std::cout << "**************************************************** \n";
+
+    (* outputF) << "**************************************************** \n";
+    (* outputF) << "Loser: \n" << *players[0];
+    (* outputF) << "**************************************************** \n";
 };
 
 bool Game::hasWon(Player* play, int index)
 {
     if (play->getHand().size() == 0) 
     {
-        std::cout << "\n\n++++++++++++++++++++++++++++++++++++++++++++++++++++ \n";
-        std::cout << "Won the Round: \n" << *play;
-        std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n";
+        (* outputF) << "\n\n++++++++++++++++++++++++++++++++++++++++++++++++++++ \n";
+        (* outputF) << "Won the Round: \n" << *play;
+        (* outputF) << "++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n";
         players.erase(players.begin() + index);
         return true;
     }

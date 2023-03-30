@@ -17,6 +17,11 @@ Player::Player(Player** pl, int ID) // Give each player their pointer to the pre
 	this ->ID = ID;
 }
 
+Player::~Player()
+{
+	pl = NULL;
+	delete pl;
+};
 vector<Card> Player::getHand()
 {
 	return hand;
@@ -61,16 +66,16 @@ void Player::giveCard(Card& card)
 
 ostream& operator<<(ostream& out, Player& players) // Prints out each players hand, what kind of player they are, and their unique ID
 {
-	cout << "Player ID: " << players.ID << endl;
-	cout << players.type() << endl;
+	out << "Player ID: " << players.ID << endl;
+	out << players.type() << endl;
 
-	auto printHand = [&out](Card& card1) { card1.print(); };
+	auto printHand = [&out](Card& card1) { out << card1.getType() << card1.getNumber() << " "; };
 	for_each(players.hand.begin(), players.hand.end(), printHand);
-	if (players.hand.size() == 0) // mostly for debugging, disregard for now
+	if (players.hand.size() == 0) 
 	{
-		cout << "empty";
+		out << "empty";
 	}
-	cout << endl;
+	out << endl;
 
 	return out;
 };
@@ -85,10 +90,9 @@ void Player::shuffleHand()
 	random_shuffle(hand.begin(), hand.end());
 };
 
-Card& Player::getCard(int cdNum) // Also mostly for debugging, lets me know card they are attemping to grab
+Card& Player::getCard(int cdNum)
 {
 	Card temp = hand[cdNum];
-	cout << "Card picked: " << temp.getType() << temp.getNumber() << endl << endl;
 	cardRemove(temp);
 	return temp;
 };

@@ -4,17 +4,18 @@
 
 Random::Random(Player** pl,int ID):Player(pl,ID) {};
 
-void Random::play()
+Card& Random::play()
 {
-	takeCard(); 
+	return takeCard(); 
 };
 
-void Random::takeCard()
+Card& Random::takeCard()
 {
 	int random = (rand() % (*pl)->getHand().size()); // Choose a random number based of the size of the last persons hand, use that to pick a card
+	Card temp = (*pl)->getCard(random);
+	checkPairs(temp);
 
-	checkPairs((*pl)->getCard(random));
-
+	return temp;
 };
 
 string Random::type()

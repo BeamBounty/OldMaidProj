@@ -3,14 +3,17 @@
 
 LeftPicker::LeftPicker(Player** pl,int ID):Player(pl,ID){};
 
-void LeftPicker::play()
+Card& LeftPicker::play()
 {
-	takeCard(); 
+	return takeCard(); 
 };
 
-void LeftPicker::takeCard()
+Card& LeftPicker::takeCard()
 {
-	checkPairs((*pl)->getCard(0)); // Grab a card from the previous player at position 0
+	Card temp = (*pl)->getCard(0); // Grab a card from the previous player at position 0
+	checkPairs(temp);
+
+	return temp;
 };
 
 string LeftPicker::type()

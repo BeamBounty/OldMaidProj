@@ -6,6 +6,7 @@
 		//Name of input files and output file
 		//Prompts through terminal
 
+#include "Game.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -13,15 +14,13 @@ using namespace std;
 class CardGameSimulator
 {
 	private:
-		ifstream input;
-		ofstream output;
+		string deckInput;
+		string playerInput;
+		string output;
+		int numOfGames;
+
 	protected:
 	public:
-
 		void get_user_input();
-		void getInputF();
-		void setInputF();
-		void getOutputF();
-		void setOutputF();
-
+		void generateGames();
 };
