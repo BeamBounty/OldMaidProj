@@ -15,14 +15,14 @@ class Player
 		Player** pl;
 		virtual Card& takeCard() = 0; // Allows us to print into the output file (can't print it otherwise if not Card&)
 		void checkPairs(Card&);
-		virtual string type() = 0;
 
 	public:
 		Player();
 		~Player();
+		Player(Player**, int);
 		void initCheckPairs();
 		virtual Card& play() = 0; // Allows us to print into the output file (can't print it otherwise if not Card&)
-		Player(Player**,int);
+		virtual string type() = 0;
 		vector<Card> getHand();
 		void giveCard(Card&);
 		friend ostream& operator<<(ostream&,Player&);
@@ -30,5 +30,6 @@ class Player
 		void shuffleHand();
 		Card& getCard(int);
 		int getID();
+		enum LoserType { LEFT_PICKER, RIGHT_PICKER, RANDOM_PICKER, SHUFFLER, ERROR  };
 };
 #endif // !PlayerH

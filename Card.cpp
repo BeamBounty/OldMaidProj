@@ -19,10 +19,9 @@ Card& Card::operator=(const Card& card1)
 	return *this;
 };
 
-bool Card::operator==(const Card& card1) 
+bool Card::operator==(const Card& card1)
 {
 	// Used if we need to check if two cards are equal to each other
-	// Not helpful in part 1 BUT when we need to start creating pairs, will be useful then
 	if (card1.getNumber() == this->number)
 		return true;
 		

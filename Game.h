@@ -15,12 +15,19 @@ class Game
 		Deck standard;
 		vector<Player*> players; 
 		ofstream* outputF;
+		int numPlayers;
+		int rnd;
+		Player::LoserType loserType;
+		
 	public:
 
 		Game();
 		Game(string,ofstream*);
 		~Game();
 		void distribCards();
+		int getNumPlayers();
+		int getRnd();
+		Player::LoserType getLoserType();
 
 		friend istream& operator>>(istream&, Game&);
 

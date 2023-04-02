@@ -20,11 +20,11 @@ public:
 	void operator+=(Card&);
 	void operator-=(Card&);
 	void makeDeck();
-	vector<Card> & getDeck();
+	vector<Card>& getDeck();
 	void shuffleCards(); 
 	vector<Card>::iterator deckBegin();
 	vector<Card>::iterator deckEnd();
-
+	 
 
 	friend istream& operator>>(istream&,Deck&);
 	friend ostream& operator<<(ostream&, Deck&);

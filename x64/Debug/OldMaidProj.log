@@ -1,5 +1,2 @@
-﻿  Card.cpp
-  Player.cpp
-  Generating Code...
-D:\Documents\OOP Code\OldMaidGit\Player.cpp(97): warning C4172: returning address of local variable or temporary: temp
+﻿  CardGameSimulator.cpp
   OldMaidProj.vcxproj -> D:\Documents\OOP Code\OldMaidGit\x64\Debug\OldMaidProj.exe

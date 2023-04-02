@@ -44,7 +44,8 @@ void Player::initCheckPairs() // Used ONCE at the start of the game to remove an
 	};
 };
 
-// What we use AFTER they have discarded all intial pairs, checks incoming card against the card in their hand. If the numbers match, discard the pair, if not, add the card to the hand.
+// What we use AFTER they have discarded all intial pairs
+// Checks incoming card against the card in their hand. If the numbers match, discard the pair, if not, add the card to the hand.
 void Player::checkPairs(Card& taken) 
 {
 	for (int i = 0; i < hand.size(); i++)

@@ -58,7 +58,7 @@ Game::~Game() // Deletes all the pointers we've created
 {
     lastPlay = NULL;
     delete lastPlay;
-    delete outputF;
+    //delete outputF;
     for_each(players.begin(), players.end(), [](Player* pl) {delete pl;}); // Iterates through players and "deletes" all player pointers
 };
 
@@ -70,12 +70,27 @@ void Game::distribCards() // Distributes the cards to each player using a lambda
     auto distribCards = [this,&i](Card& card1)
     {
         players[i++]->giveCard(card1);
-        i %= players.size(); // Allows i to bounce between 0 and 6 and distribute cards to those players
+        i %= players.size(); // Allows i to cycle between 0 and players.size()-1 and distribute cards to those players
     };
 
     for_each(standard.deckBegin(), standard.deckEnd(), distribCards);
 
-};
+}
+int Game::getNumPlayers()
+{
+    return numPlayers;
+}
+
+int Game::getRnd()
+{
+    return rnd;
+}
+
+Player::LoserType Game::getLoserType()
+{
+    return loserType;
+}
+
 
 // Reads in all data from input2.txt (for Project Part 2), also checks to see if players are between certain intervals to determine which kind of player should be created
 // Once created they are pushed onto the vector of players
@@ -100,9 +115,12 @@ istream& operator>>(istream& file, Game& game)
         file >> temp;
         instructions[i] = stoi(temp);
     };
-    int numPlayers = (rand() % (instructions[1] - instructions[0])) + instructions[0];
+    
+    // Set number of players (random int between 2 and 8)
+    game.numPlayers = (rand() % (instructions[1] - instructions[0])) + instructions[0];
 
-    for (int i = 0; i < numPlayers; i++)
+    // Set player_type based on input2.txt probabilities
+    for (int i = 0; i < game.numPlayers; i++)
     {
         int randGen = rand() % 100 + 1;
         Player* ptemp;
@@ -123,14 +141,15 @@ istream& operator>>(istream& file, Game& game)
             ptemp = new Shuffler(&game.lastPlay,i+1);
         }
 
-        game.players.push_back(ptemp);
+        game.players.push_back(ptemp); //***Can store player types and num_players for statisticskeeper here
+
     }
    
     return file;
 };
 
 // Plays the game, sets the pointer to the LAST created player (so player at index 0 has someone to draw from)
-// Distributes cards, when a player removes are cards in their hand (getHand().size() == 0) erase them from the vector of players
+// Distributes cards, when a player removes all cards in their hand (getHand().size() == 0) erase them from the vector of players
 // Repeat until there is only 1 player left, they will be declared the loser
 // Those who hit a hand size == 0, will be declared winner in whichever round they manage to clear their hand
 void Game::gamePlay() 
@@ -138,10 +157,12 @@ void Game::gamePlay()
 
     lastPlay = players[players.size() - 1];
 
-    int i = 0;
+    
     distribCards();
     for_each(players.begin(), players.end(), [](Player* temp) { temp->initCheckPairs(); });
-    int rnd = 0;
+
+    int i = 0;
+    rnd = 0;
     while (players.size() > 1)
     {
         if (rnd == 1000) // If infinite loop, we need disk space
@@ -185,10 +206,29 @@ void Game::gamePlay()
         i %= players.size();
     }
 
+    // Loser determined here. Set the type in the loserType property
+    
+    string loser = players[0]->type();
+    
+    if ((loser.find("Left") == 0))
+        loserType = Player::LEFT_PICKER;
+    else if ((loser.find("Right") == 0))
+        loserType = Player::RIGHT_PICKER;
+    else if ((loser.find("Random") == 0))
+        loserType = Player::RANDOM_PICKER;
+    else if ((loser.find("Shuffle") == 0))
+        loserType = Player::SHUFFLER;
+    else loserType = Player::ERROR;
+
+    
+    
     (* outputF) << "**************************************************** \n";
     (* outputF) << "Loser: \n" << *players[0];
+    //Append loser to StatisticsKeeper vector
+    //players[0] is a pointer to loser
     (* outputF) << "**************************************************** \n";
-};
+
+}
 
 bool Game::hasWon(Player* play, int index)
 {
@@ -202,4 +242,4 @@ bool Game::hasWon(Player* play, int index)
     }
 
     return false;
-};
+}

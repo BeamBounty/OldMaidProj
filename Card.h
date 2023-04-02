@@ -12,7 +12,7 @@ class Card
 	public:
 		Card(char, int);
 		Card(const Card&);
-		Card &operator=(const Card&);
+		Card& operator=(const Card&);
 		bool operator==(const Card&);
 		void setType(char);
 		void setNumber(int);

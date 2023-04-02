@@ -84,7 +84,7 @@ ostream& operator<<(ostream& out, Deck& deck1)
 void Deck::makeDeck() // If decks get very large WILL NEED TO MAKE CHANGES TO THIS FOR SPACE COMPLEXITY
 {
 	// A loop to intialize cards 1 ~ 13 for Clubs, Diamonds, Hearts, and Spades
-	// Could use a for each loop but would require another frankly unnecessary lambda function
+	// Could use a for each loop but would require another unnecessary lambda function
 	for (int i = 1; i <= 13; i++)
 	{
 		Card Clubs('C', i);

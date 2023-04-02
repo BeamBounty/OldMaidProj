@@ -10,9 +10,7 @@ using namespace std;
 
 int main()
 {
-    // TEST DRIVER, works but feel free to change
     srand(time(0));
-
 
     CardGameSimulator cgs;
 
