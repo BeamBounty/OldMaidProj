@@ -24,6 +24,13 @@ void StatisticsKeeper::printStats(ofstream& outFile)
 	outFile << setw(myWidth) << "Players Generated : " << "  " << accumulatedPlayers << endl;
 	outFile << setw(myWidth) << "Average Players Per Game: " << "  " << accumulatedPlayers / (double)numGames << endl;
 
+	cout << "\n\n\n##############---Final Statistics---#############\n" << endl;
+	cout << left << setw(myWidth) << "Games played: " << "  " << numGames << endl;
+	cout << setw(myWidth) << "Rounds Played: " << "  " << accumulatedRounds << endl;
+	cout << setw(myWidth) << "Average Rounds Per Game: " << "  " << fixed << setprecision(1) << accumulatedRounds / (double)numGames << endl;
+	cout << setw(myWidth) << "Players Generated : " << "  " << accumulatedPlayers << endl;
+	cout << setw(myWidth) << "Average Players Per Game: " << "  " << accumulatedPlayers / (double)numGames << endl;
+
 	double totalLosers = numGames;
 	double leftPercent = losers[Player::LEFT_PICKER] / totalLosers * 100;
 	double rightPercent = losers[Player::RIGHT_PICKER] / totalLosers * 100;
@@ -37,6 +44,14 @@ void StatisticsKeeper::printStats(ofstream& outFile)
 	outFile << setw(myWidth) << "Shuffler Picker" << "  " << shufflerPercent << "%" << endl;
 
 	outFile << "\n#################################################" << endl;
+
+	cout << "\n------Loser Statistics------\n";
+	cout << setw(myWidth) << left << "Left Picker" << "  " << setprecision(1) << fixed << leftPercent << "%" << endl;
+	cout << setw(myWidth) << "Right Picker" << "  " << rightPercent << "%" << endl;
+	cout << setw(myWidth) << "Random Picker" << "  " << randomPercent << "%" << endl;
+	cout << setw(myWidth) << "Shuffler Picker" << "  " << shufflerPercent << "%" << endl;
+
+	cout << "\n#################################################" << endl;
 }
 
 void StatisticsKeeper::setNumGames(int gameCount)

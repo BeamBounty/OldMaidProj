@@ -76,8 +76,8 @@ istream& operator>>(istream& in, Deck& deck1)
 ostream& operator<<(ostream& out, Deck& deck1)
 {
 	// Lambda function which allows to take a card object by reference and print it
-	auto printDeck = [&out](Card& card1) { card1.print(); }; 
-	for_each(deck1.standard.begin(), deck1.standard.end(), printDeck);
+	//auto printDeck = [&out](Card& card1) { card1.print(); }; 
+	//for_each(deck1.standard.begin(), deck1.standard.end(), printDeck);
 	return out;
 };
 
